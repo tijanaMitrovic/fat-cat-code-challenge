@@ -122,7 +122,7 @@ function GenericListView() {
 							</label>
 						</>
 					)}
-					{!isLongText && !isBoolean && (
+					{!isLongText && !isBoolean && newItem.propertyName !== 'id' && (
 						<input
 							type={newItem.type}
 							onChange={(event) => {
@@ -130,7 +130,7 @@ function GenericListView() {
 							}}
 						/>
 					)}
-					<button type="button" onClick={() => updateData(newItem, item.index)}>Update</button>
+					{newItem.propertyName !== 'id' && (<button type="button" onClick={() => updateData(newItem, item.index)}>Update</button>)}
 				</div>
 			</div>
 		);
