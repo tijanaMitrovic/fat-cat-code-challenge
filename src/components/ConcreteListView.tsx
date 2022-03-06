@@ -10,7 +10,7 @@ function ConcreteListView() {
 	const gridRef = useRef<List>();
 
 	const getData = () => {
-		fetch('generated.json', {
+		fetch('known.json', {
 			headers:
             { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => {

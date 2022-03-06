@@ -9,7 +9,7 @@ function GenericListView() {
 	const [data, setData] = useState<IGenericModel[]>([]);
 	const gridRef = useRef<List>();
 	const getData = () => {
-		fetch('generated.json', {
+		fetch('generic.json', {
 			headers:
                 { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => {
