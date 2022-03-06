@@ -1,24 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { List as ListView, ListRowProps } from 'react-virtualized';
-import { IModel } from '../model/Model';
-import './List.css';
+import { List, ListRowProps } from 'react-virtualized';
 import { AutoSizer } from 'react-virtualized';
 import { v4 as uuidv4 } from 'uuid';
+import { IModel } from '../model/Model';
+import './ListView.css';
 
-function List() {
+function ListView() {
 	const [data, setData] = useState<IModel[]>([]);
-	const [count, setCount] = useState(1);
-	const gridRef = useRef<ListView>();
+	const gridRef = useRef<List>();
 
 	const getData = () => {
 		fetch('generated.json', {
 			headers:
             { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => {
-			// console.log(response);
 			return response.json();
 		}).then((myJSON:IModel[]) => {
-			console.log(myJSON);
 			setData(myJSON);
 		});
 	};
@@ -27,20 +24,12 @@ function List() {
 	}, []);
 
 	const updateData = (newItem:IModel, index:number) => {
-		console.log(data[index]);
 		data[index] = newItem;
-		console.log(data[index]);
-		// setCount(count + 1);
-		console.log(gridRef.current);
 		gridRef.current?.forceUpdateGrid();
 	};
 
 	const renderRow = (item: ListRowProps) => {
 		const newItem: IModel | undefined = data && data[item.index];
-		// console.log(newItem?.about);
-		// item.style.border = '1px solid black';
-		// item.style.margin = '10px';
-		// item.style.width = '90%';
 		return (
 			<div key={item.key} style={item.style}>
 				{newItem?.id && (
@@ -341,11 +330,11 @@ function List() {
 		<div style={{ height: '100vh', width: '60vw' }} className="container">
 			<AutoSizer>
 				{({ height, width }) => (
-					<ListView ref={(ref:ListView) => { gridRef.current = ref; }} width={width} height={height} rowHeight={1500} rowCount={data ? data?.length : 0} rowRenderer={renderRow} />
+					<List ref={(ref:List) => { gridRef.current = ref; }} width={width} height={height} rowHeight={1600} rowCount={data ? data?.length : 0} rowRenderer={renderRow} />
 				)}
 
 			</AutoSizer>
 		</div>
 	);
 }
-export default List;
+export default ListView;
