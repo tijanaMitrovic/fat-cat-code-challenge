@@ -3,6 +3,7 @@ import { List as ListView, ListRowProps } from 'react-virtualized';
 import { IModel } from '../model/Model';
 import './List.css';
 import { AutoSizer } from 'react-virtualized';
+import { v4 as uuidv4 } from 'uuid';
 
 function List() {
 	const [data, setData] = useState<IModel[]>([]);
@@ -44,19 +45,15 @@ function List() {
 			<div key={item.key} style={item.style}>
 				{newItem?.id && (
 					<div className="row">
-
 						Id:
 						{' '}
 						{newItem.id}
-
 					</div>
 				)}
 				<div className="row">
-
 					Index:
 					{' '}
 					{newItem?.index}
-
 					<input
 						id="indexId"
 						type="number"
@@ -64,22 +61,25 @@ function List() {
 							newItem.index = Number(event.target.value);
 						}}
 					/>
-					<button type="button" onClick={() => updateData(newItem, item.index)}>Update</button>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update index</button>
 				</div>
 				<div className="row">
-
 					Guid:
 					{' '}
 					{newItem?.guid}
-
-					<input id="guidId" type="text" />
+					<input
+						id="guidId"
+						type="text"
+						onChange={(event) => {
+							newItem.guid = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update guid</button>
 				</div>
 				<div className="row">
-
 					Is active:
 					{' '}
 					{newItem?.isActive.toString()}
-
 					<label htmlFor="activeTrueId">
 						true
 						<input
@@ -105,148 +105,232 @@ function List() {
 							}}
 						/>
 					</label>
-					<button type="button" onClick={() => updateData(newItem, item.index)}>Update</button>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update activity</button>
 				</div>
 				<div className="row">
-
 					Balance:
 					{' '}
 					{newItem?.balance}
-
-					<input id="balanceId" type="text" />
+					<input
+						id="balanceId"
+						type="text"
+						onChange={(event) => {
+							newItem.balance = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update balance</button>
 				</div>
 				<div className="row">
-
 					Picture:
 					{' '}
 					{newItem?.picture}
-					<input id="pictureId" type="text" />
+					<input
+						id="pictureId"
+						type="text"
+						onChange={(event) => {
+							newItem.picture = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update picture</button>
 				</div>
 				<div className="row">
-
 					Age:
 					{' '}
 					{newItem?.age}
-
-					<input id="ageId" type="number" />
+					<input
+						id="ageId"
+						type="number"
+						onChange={(event) => {
+							newItem.age = Number(event.target.value);
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update age</button>
 				</div>
 				<div className="row">
-
 					Eye color:
 					{' '}
 					{newItem?.eyeColor}
-
-					<input id="eyeColorId" type="text" />
+					<input
+						id="eyeColorId"
+						type="text"
+						onChange={(event) => {
+							newItem.eyeColor = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update eye color</button>
 				</div>
 				<div className="row">
-
 					Name:
 					{' '}
 					{newItem?.name}
-
-					<input id="nameId" type="text" />
+					<input
+						id="nameId"
+						type="text"
+						onChange={(event) => {
+							newItem.name = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update name</button>
 				</div>
 				<div className="row">
-
 					Gender:
 					{' '}
 					{newItem?.gender}
-
-					<input id="genderId" type="text" />
+					<input
+						id="genderId"
+						type="text"
+						onChange={(event) => {
+							newItem.gender = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update gender</button>
 				</div>
 				<div className="row">
-
 					Company:
 					{' '}
 					{newItem?.company}
-
-					<input id="companyId" type="text" />
+					<input
+						id="companyId"
+						type="text"
+						onChange={(event) => {
+							newItem.company = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update company</button>
 				</div>
 				<div className="row">
-
 					Email:
 					{' '}
 					{newItem?.email}
-
-					<input id="emailId" type="email" />
+					<input
+						id="emailId"
+						type="email"
+						onChange={(event) => {
+							newItem.email = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update email</button>
 				</div>
 				<div className="row">
-
 					Phone:
 					{' '}
 					{newItem?.phone}
-
-					<input id="phoneId" type="text" />
+					<input
+						id="phoneId"
+						type="text"
+						onChange={(event) => {
+							newItem.phone = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update phone</button>
 				</div>
 				<div className="row">
-
 					Address:
 					{' '}
 					{newItem?.address}
-
-					<input id="addressId" type="text" />
+					<input
+						id="addressId"
+						type="text"
+						onChange={(event) => {
+							newItem.address = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update address</button>
 				</div>
 				<div className="row">
-
 					About:
 					{' '}
 					{newItem?.about}
-
-					<textarea id="aboutId" />
+					<textarea
+						id="aboutId"
+						onChange={(event) => {
+							newItem.about = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update about</button>
 				</div>
 				<div className="row">
-
 					Registered:
 					{' '}
-					{newItem?.registered}
-
-					<input id="registeredId" type="date" />
+					{newItem?.registered.toString()}
+					<input
+						id="registeredId"
+						type="date"
+						onChange={(event) => {
+							newItem.registered = new Date(event.target.value);
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update registred</button>
 				</div>
 				<div className="row">
-
 					Latitude:
 					{' '}
 					{newItem?.latitude}
-
-					<input id="latitudeId" type="number" />
+					<input
+						id="latitudeId"
+						type="number"
+						onChange={(event) => {
+							newItem.latitude = Number(event.target.value);
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update latitude</button>
 				</div>
 				<div className="row">
-
 					Longitude:
 					{' '}
 					{newItem?.longitude}
-
-					<input id="longitudeId" type="number" />
+					<input
+						id="longitudeId"
+						type="number"
+						onChange={(event) => {
+							newItem.longitude = Number(event.target.value);
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update longitude</button>
 				</div>
 				<div className="row">
-
 					Tags:
 					{' '}
-					{newItem?.tags}
-
+					{newItem?.tags.map((tag, index) => (
+						<div key={uuidv4()} className="underRow">
+							{index + 1 < newItem?.tags.length ? tag.concat(', ') : tag}
+						</div>
+					))}
 				</div>
 				<div className="row">
-
 					Friends:
 					{' '}
-					{newItem?.friends.map(friend => <span key={friend.id}>{friend.name}</span>)}
-
+					{newItem?.friends.map((friend, index) => (
+						<div key={friend.id} className="underRow">
+							{index + 1 < newItem?.friends.length ? friend.name.concat(', ') : friend.name}
+						</div>
+					))}
 				</div>
 				<div className="row">
-
 					Greeting:
 					{' '}
 					{newItem?.greeting}
-
-					<input id="greetingId" type="text" />
+					<input
+						id="greetingId"
+						type="text"
+						onChange={(event) => {
+							newItem.greeting = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update greeting</button>
 				</div>
 				<div className="row">
-
 					Favorite fruit:
 					{' '}
 					{newItem?.favoriteFruit}
-
-					<input id="favoriteFruitId" type="text" />
+					<input
+						id="favoriteFruitId"
+						type="text"
+						onChange={(event) => {
+							newItem.favoriteFruit = event.target.value;
+						}}
+					/>
+					<button type="button" onClick={() => updateData(newItem, item.index)}>Update favorite fruit</button>
 				</div>
 			</div>
 		);
@@ -254,10 +338,10 @@ function List() {
 
 	return (
 
-		<div style={{ height: '100vh', width: '80vw' }} className="container">
+		<div style={{ height: '100vh', width: '60vw' }} className="container">
 			<AutoSizer>
 				{({ height, width }) => (
-					<ListView ref={(ref:ListView) => { gridRef.current = ref; }} width={width} height={height} rowHeight={1100} rowCount={data ? data?.length : 0} rowRenderer={renderRow} />
+					<ListView ref={(ref:ListView) => { gridRef.current = ref; }} width={width} height={height} rowHeight={1500} rowCount={data ? data?.length : 0} rowRenderer={renderRow} />
 				)}
 
 			</AutoSizer>

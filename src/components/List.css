@@ -1,6 +1,10 @@
 .row {
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    margin-left: 5px;
+    padding: 0px 10px 0px 10px;
+    margin: 5px 15px 0px 15px;
+}
+
+.underRow {
+    display: contents;
 }
