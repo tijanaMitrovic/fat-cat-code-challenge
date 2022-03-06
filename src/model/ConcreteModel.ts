@@ -2,11 +2,7 @@ interface IFriends {
     id: number
     name: string
 }
-export interface IModel {
-    // propertyName: string
-    // value: unknown
-    // type: string
-    // isEditable: boolean
+export interface IConcreteModel {
     id: string
     index: number
     guid: string

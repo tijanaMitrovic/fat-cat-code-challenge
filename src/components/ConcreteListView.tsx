@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { List, ListRowProps } from 'react-virtualized';
 import { AutoSizer } from 'react-virtualized';
 import { v4 as uuidv4 } from 'uuid';
-import { IModel } from '../model/Model';
+import { IConcreteModel } from '../model/ConcreteModel';
 import './ListView.css';
 
-function ListView() {
-	const [data, setData] = useState<IModel[]>([]);
+function ConcreteListView() {
+	const [data, setData] = useState<IConcreteModel[]>([]);
 	const gridRef = useRef<List>();
 
 	const getData = () => {
@@ -15,7 +15,7 @@ function ListView() {
             { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => {
 			return response.json();
-		}).then((myJSON:IModel[]) => {
+		}).then((myJSON:IConcreteModel[]) => {
 			setData(myJSON);
 		});
 	};
@@ -23,13 +23,13 @@ function ListView() {
 		getData();
 	}, []);
 
-	const updateData = (newItem:IModel, index:number) => {
+	const updateData = (newItem:IConcreteModel, index:number) => {
 		data[index] = newItem;
 		gridRef.current?.forceUpdateGrid();
 	};
 
 	const renderRow = (item: ListRowProps) => {
-		const newItem: IModel | undefined = data && data[item.index];
+		const newItem: IConcreteModel | undefined = data && data[item.index];
 		return (
 			<div key={item.key} style={item.style}>
 				{newItem?.id && (
@@ -337,4 +337,4 @@ function ListView() {
 		</div>
 	);
 }
-export default ListView;
+export default ConcreteListView;
