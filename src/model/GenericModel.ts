@@ -1,4 +1,4 @@
-export interface IRandomModel {
+export interface IGenericModel {
     propertyName: string
     propertyValue: string
     type: string

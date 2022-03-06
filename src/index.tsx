@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import RandomListView from './components/RandomListView';
+import GenericListView from './components/GenericListView';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<RandomListView />
+		<GenericListView />
 	</React.StrictMode>,
 	document.getElementById('root')
 );

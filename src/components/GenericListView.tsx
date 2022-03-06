@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { List, ListRowProps } from 'react-virtualized';
 import { AutoSizer } from 'react-virtualized';
-import { IRandomModel } from '../model/GenericModel';
+import { IGenericModel } from '../model/GenericModel';
 import Utils from '../utils/Utils';
 import './ListView.css';
 
-function RandomListView() {
-	const [data, setData] = useState<IRandomModel[]>([]);
+function GenericListView() {
+	const [data, setData] = useState<IGenericModel[]>([]);
 	const gridRef = useRef<List>();
 	const getData = () => {
 		fetch('generated.json', {
@@ -41,7 +41,7 @@ function RandomListView() {
 		getData();
 	}, []);
 
-	const updateData = (newItem:IRandomModel, index:number) => {
+	const updateData = (newItem:IGenericModel, index:number) => {
 		data[index] = newItem;
 		gridRef.current?.forceUpdateGrid();
 	};
@@ -76,7 +76,7 @@ function RandomListView() {
 	};
 
 	const renderRow = (item: ListRowProps) => {
-		const newItem: IRandomModel = data && data[item.index];
+		const newItem: IGenericModel = data && data[item.index];
 		const isBoolean = newItem.type === 'boolean';
 		const isLongText = newItem.type === 'text' && newItem.propertyValue.length > 50;
 		return (
@@ -147,4 +147,4 @@ function RandomListView() {
 		</div>
 	);
 }
-export default RandomListView;
+export default GenericListView;
