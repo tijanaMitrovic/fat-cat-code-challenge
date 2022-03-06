@@ -1,0 +1,6 @@
+.row {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    margin-left: 5px;
+}
